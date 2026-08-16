@@ -1,16 +1,14 @@
 # Upload index.html
 
-The production `index.html` (~111 KB) is maintained on Netlify / local build.
+The production `index.html` (~125 KB) is the Netlify file.
 
-**Add it via GitHub UI (one-time):**
+1. Download from the project / Netlify deploy source
+2. GitHub → Add file → Upload files → `index.html`
+3. Or drag only `index.html` to Netlify
 
-1. Open https://github.com/Rustys90/airlines-travel
-2. **Add file → Upload files**
-3. Drop the latest `index.html` (from your Netlify deploy or project folder)
-4. Commit to `main`
+**API:** `api/server.js` must be hosted separately with `DUFFEL_ACCESS_TOKEN`. Set on the site:
+```html
+<script>window.AIRLINES_API_BASE = "https://YOUR-API-HOST";</script>
+```
 
-**Safe to include:** public Travelpayouts tracking links (`*.tp.st/...`).
-
-**Never commit:** API tokens, Supabase service keys, `.env` with real values.
-
-`api/.env.example` uses placeholders only.
+Never put Duffel tokens in index.html.
