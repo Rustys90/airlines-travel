@@ -1,49 +1,35 @@
+
 # Airlines
 
-<p align="center">
-  <img src="docs/logo.svg" alt="Airlines logo" width="120" />
-</p>
+Dark-themed travel site with **Duffel** flight search and test booking.
 
-<p align="center">
-  <strong>Premium dark-themed travel site</strong><br/>
-  Flight search · Destinations · Affiliate booking handoff
-</p>
+## Stack
+- `index.html` — UI (Tailwind CDN, vanilla JS)
+- `api/server.js` — Express proxy to Duffel (token stays on server)
+- `404.html` — Not-found page
+- `DEPLOY.md` — Hosting notes
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Frontend-HTML%20%2B%20Tailwind-38bdf8?style=for-the-badge" alt="Frontend" />
-  <img src="https://img.shields.io/badge/Backend-Node%20%2B%20Express-339933?style=for-the-badge" alt="Backend" />
-  <img src="https://img.shields.io/badge/Database-Supabase-3ecf8e?style=for-the-badge" alt="Supabase" />
-</p>
+## Done in code
+- Duffel search (`POST /api/flights`) + place resolve
+- Multi-passenger checkout → `POST /api/orders` (test: balance payment)
+- Date validation, phone checks, escaped results
+- Legal sections, cookie banner, disclosures, accessibility
 
----
-
-## Important
-
-- **No API secrets in this repo.** Use `api/.env` locally (see `.env.example` placeholders only).
-- On-page flight results are **sample UI**. Booking opens partner sites (affiliate links).
-- Final prices and tickets are on the partner — never claimed as live inventory on this site.
-
-## Files
-
-| Path | Purpose |
-|------|---------|
-| `index.html` | Main production frontend |
-| `404.html` | Not-found page (Netlify auto) |
-| `robots.txt` / `sitemap.xml` | SEO |
-| `api/` | Optional Express + Supabase skeleton |
-| `docs/logo.svg` | Brand mark |
-
-## Quick start
-
+## Local
 ```bash
-npx serve .
-# or deploy index.html + 404.html to Netlify
+cd api
+cp .env.example .env
+# DUFFEL_ACCESS_TOKEN=duffel_test_...
+npm install
+npm start
 ```
+Open http://localhost:3000
 
-## Legal on the site
+## Netlify
+Upload `index.html` (and optional `404.html`). Flight search needs a separate API host with the Duffel token — set `window.AIRLINES_API_BASE` when the API is live.
 
-Privacy, Cookies, Terms, Accessibility, Affiliate/advertising disclosure — sections on `index.html`.
-
-## License
-
-Private project — all rights reserved.
+## Your checklist
+1. Rotate any token shared in chat
+2. Duffel business verification + live token when ready
+3. Deploy API with `DUFFEL_ACCESS_TOKEN`
+4. Never commit `.env` or real secrets
