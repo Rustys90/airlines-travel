@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" style="color-scheme: dark">
+<head>
+    <!-- Set this when frontend is on Netlify and API is elsewhere, e.g. https://api.yourdomain.com -->
+    <script>window.AIRLINES_API_BASE = "https://flyio-xu16.onrender.com";</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airlines — Travel the World Without Stress</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0a'/%3E%3Cpath d='M6 18h8l4-8 4 8h4' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0a'/%3E%3Cpath d='M6 18h8l4-8 4 8h4' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+    <meta name="description" content="Premium stress-free travel experiences. Personalized itineraries, 24/7 support and handpicked destinations across 50+ countries. Book your next journey with Airlines.">
+    <meta name="keywords" content="travel agency, luxury travel, personalized itineraries, flight booking, destinations, stress-free travel, Airlines">
+    <meta name="author" content="Airlines Travel">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://airlines.example.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://airlines.example.com/">
+    <meta property="og:title" content="Airlines — Travel the World Without Stress">
+    <meta property="og:description" content="Premium stress-free travel experiences with personalized itineraries and 24/7 support.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop">
+    <meta property="og:site_name" content="Airlines">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Airlines — Travel the World Without Stress">
+    <meta name="twitter:description" content="Premium stress-free travel experiences with personalized itineraries and 24/7 support.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop">
+
+    <!-- Preconnect & Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=750&fit=crop">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { DEFAULT: '#0a0a0a', soft: '#080808', card: '#111' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Airlines",
+      "url": "https://airlines.example.com",
+      "logo": "https://airlines.example.com/logo.png",
+      "description": "Premium stress-free travel experiences with personalized itineraries across 50+ countries.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Global",
+        "addressCountry": "US"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "10000"
+      },
+      "priceRange": "$$-$$$"
+    }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        body::-webkit-scrollbar { width: 0; display: none; }
+        body { scrollbar-width: none; -ms-overflow-style: none; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes letterReveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes progress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+        .delay-900 { animation-delay: 0.9s; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.92); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
+
+        .stagger-children > *:nth-child(1) { transition-delay: 0s; }
+        .stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
+        .stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
+        .stagger-children > *:nth-child(5) { transition-delay: 0.4s; }
+        .stagger-children > *:nth-child(6) { transition-delay: 0.5s; }
+
+        .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; }
+        .mobile-menu.hidden { opacity: 0; pointer-events: none; transform: translateY(-10px); visibility: hidden; }
+        .mobile-menu:not(.hidden) { opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+
+        .destination-card { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, opacity 0.4s ease; }
+        .destination-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); }
+        .destination-card img { transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .destination-card:hover img { transform: scale(1.08); }
+        .destination-card.filtered-out { opacity: 0; transform: scale(0.95); pointer-events: none; height: 0; margin: 0; overflow: hidden; }
+
+        .feature-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .feature-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.03); }
+
+        .testimonial-card { transition: all 0.4s ease; }
+        .testimonial-card:hover { transform: translateY(-4px); }
+
+        .nav-scrolled {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .newsletter-input:focus { outline: none; box-shadow: 0 0 0 2px rgba(255,255,255,0.2); }
+
+        img { opacity: 0; transition: opacity 0.6s ease; }
+        img.loaded { opacity: 1; }
+
+        /* FAQ Accordion */
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+        /* Cursor glow on cards */
+        .glow-card { position: relative; overflow: hidden; }
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+        }
+        .glow-card:hover::before { opacity: 0.35; }
+        .low-end .glow-card::before { display: none !important; }
+
+        /* Loading screen */
+        #loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: #0a0a0a;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        #loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-bar { height: 2px; background: rgba(255,255,255,0.15); width: 120px; border-radius: 2px; overflow: hidden; }
+        .loader-progress { height: 100%; background: white; width: 0%; animation: progress 1.4s ease forwards; }
+
+        /* Letter stagger */
+        .letter { display: inline-block; opacity: 0; animation: letterReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        /* Light mode — full contrast fix (dark stays default) */
+        html.light body { background: #f4f4f5; color: #111; }
+        html.light #loader { background: #f4f4f5; color: #111; }
+        html.light #loader .loader-bar { background: rgba(0,0,0,0.08); }
+        html.light #loader .loader-progress { background: #111; }
+        html.light nav { color: #111; }
+        html.light .nav-scrolled { background: rgba(255,255,255,0.92) !important; border-bottom-color: rgba(0,0,0,0.08) !important; backdrop-filter: blur(12px); }
+        html.light .bg-brand,
+        html.light .bg-\[\#0a0a0a\],
+        html.light .bg-\[\#080808\],
+        html.light .bg-\[\#050505\],
+        html.light .bg-\[\#0c0c0c\],
+        html.light .bg-\[\#111\] { background: #f4f4f5 !important; }
+        html.light section { color: #111; }
+        html.light .text-white { color: #111 !important; }
+        html.light .text-white\/90 { color: rgba(17,17,17,0.9) !important; }
+        html.light .text-white\/80 { color: rgba(17,17,17,0.8) !important; }
+        html.light .text-white\/70 { color: rgba(17,17,17,0.72) !important; }
+        html.light .text-white\/60 { color: rgba(17,17,17,0.62) !important; }
+        html.light .text-white\/50 { color: rgba(17,17,17,0.55) !important; }
+        html.light .text-white\/40 { color: rgba(17,17,17,0.48) !important; }
+        html.light .text-white\/30 { color: rgba(17,17,17,0.4) !important; }
+        html.light .border-white\/10,
+        html.light .border-white\/5,
+        html.light .border-white\/15,
+        html.light .border-white\/20,
+        html.light .border-white\/30,
+        html.light .border-white\/40,
+        html.light .border-white\/80 { border-color: rgba(0,0,0,0.12) !important; }
+        html.light .bg-white\/5,
+        html.light .bg-white\/\[0\.02\],
+        html.light .bg-white\/\[0\.03\],
+        html.light .bg-white\/\[0\.04\] { background: #fff !important; }
+        html.light .bg-white\/10 { background: rgba(0,0,0,0.05) !important; }
+        html.light .hover\:bg-white\/5:hover,
+        html.light .hover\:bg-white\/10:hover { background: rgba(0,0,0,0.05) !important; }
+        html.light .destination-card,
+        html.light .feature-card,
+        html.light .testimonial-card,
+        html.light .glow-card,
+        html.light .faq-item { background: #fff !important; border-color: rgba(0,0,0,0.08) !important; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+        html.light .newsletter-input,
+        html.light input,
+        html.light select,
+        html.light textarea {
+            background: #fff !important;
+            color: #111 !important;
+            border-color: rgba(0,0,0,0.15) !important;
+        }
+        html.light input::placeholder,
+        html.light textarea::placeholder { color: rgba(0,0,0,0.4) !important; }
+        /* Primary CTAs: keep high contrast in light */
+        html.light .bg-white.text-black,
+        html.light a.bg-white,
+        html.light button.bg-white {
+            background: #111 !important;
+            color: #fff !important;
+        }
+        html.light .hover\:bg-white:hover { background: #111 !important; color: #fff !important; }
+        html.light .hover\:text-black:hover { color: #fff !important; }
+        html.light #back-to-top { background: #111 !important; color: #fff !important; }
+        html.light #cookie-banner { background: #fff !important; border-color: rgba(0,0,0,0.1) !important; color: #111; }
+        html.light #checkout-modal,
+        html.light #newsletter-popup { background: rgba(0,0,0,0.45) !important; }
+        html.light #checkout-success-panel { background: #f4f4f5 !important; border-color: rgba(0,0,0,0.1) !important; }
+        html.light #checkout-modal > div,
+        html.light #newsletter-popup > div { background: #fff !important; border-color: rgba(0,0,0,0.1) !important; color: #111; }
+        html.light .text-red-400 { color: #b91c1c !important; }
+        html.light .text-emerald-400\/90 { color: #047857 !important; }
+        html.light .gradient-text,
+        html.light .bg-clip-text { -webkit-text-fill-color: #111; color: #111 !important; background: none !important; }
+        html.light footer { background: #ebebed !important; color: #111; }
+        html.light #mobile-menu { background: #fff !important; }
+        html.light .route-chip { border-color: rgba(0,0,0,0.15) !important; color: #333 !important; }
+        html.light .route-chip:hover { background: rgba(0,0,0,0.05) !important; }
+        html.light .filter-btn { border-color: rgba(0,0,0,0.12) !important; color: #333 !important; }
+        html.light .filter-btn.active { background: #111 !important; color: #fff !important; border-color: #111 !important; }
+        html.light .book-btn { background: #111 !important; color: #fff !important; }
+        html.light .pricing-featured { background: #111 !important; color: #fff !important; }
+        html.light .pricing-featured .text-black\/70,
+        html.light .pricing-featured .text-black\/50 { color: rgba(255,255,255,0.7) !important; }
+        html.light .hero-overlay { background: linear-gradient(to bottom, rgba(244,244,245,0.7), #f4f4f5) !important; }
+        html.light .announcement-bar { background: #111 !important; color: #fff !important; }
+        
+        html.light .trip-type-btn.bg-white { background: #111 !important; color: #fff !important; }
+        html.light .announcement-bar .text-white\/80 { color: rgba(255,255,255,0.85) !important; }
+
+        /* Focus indicators for a11y */
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+        html.light a:focus-visible, html.light button:focus-visible, html.light input:focus-visible {
+            outline-color: #111;
+        }
+
+
+        /* Mobile search polish */
+        @media (max-width: 767px) {
+            #flight-search-panel { border-radius: 1.25rem; }
+            #flight-search-form input,
+            #flight-search-form select { font-size: 16px !important; } /* avoid iOS zoom */
+            #search-flights-btn { width: 100%; }
+        }
+        #search-sticky-bar {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 45;
+            padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+            background: rgba(10,10,10,0.92); backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        #search-sticky-bar a {
+            display: block; text-align: center;
+            background: #fff; color: #000; font-weight: 500; font-size: 14px;
+            border-radius: 9999px; padding: 12px 16px;
+        }
+        html.light #search-sticky-bar { background: rgba(255,255,255,0.95); border-top-color: rgba(0,0,0,0.08); }
+        html.light #search-sticky-bar a { background: #111; color: #fff; }
+        @media (max-width: 767px) {
+            #search-sticky-bar.show { display: block; }
+            body.has-sticky-search { padding-bottom: 72px; }
+        }
+        .low-end .parallax-video { transform: none !important; }
+        .low-end .glow-card:hover { box-shadow: none !important; }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Parallax helper */
+        .parallax-video { will-change: transform; }
+        .section-kicker { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; }
+        .section-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 500; line-height: 1.15; color: #fff; }
+        .section-sub { margin-top: 0.75rem; font-size: 0.95rem; color: rgba(255,255,255,0.5); max-width: 28rem; }
+        html.light .section-kicker { color: rgba(0,0,0,0.45); }
+        html.light .section-title { color: #111; }
+        html.light .section-sub { color: rgba(0,0,0,0.55); }
+        .nav-link-active { color: #fff !important; box-shadow: inset 0 -2px 0 #fff; }
+        html.light .nav-link-active { color: #111 !important; box-shadow: inset 0 -2px 0 #111; }
+        .nav-scrolled { background: rgba(10,10,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        html.light .nav-scrolled { background: rgba(255,255,255,0.92) !important; }
+        .dest-img-wrap { aspect-ratio: 4/3; overflow: hidden; position: relative; }
+        .dest-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75), transparent 55%); pointer-events: none; }
+        .flight-skeleton { height: 72px; border-radius: 0.75rem; background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.08), rgba(255,255,255,0.04)); background-size: 200% 100%; animation: skel 1.2s ease infinite; }
+        @keyframes skel { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        html.light .flight-skeleton { background: linear-gradient(90deg, #eee, #f5f5f5, #eee); background-size: 200% 100%; }
+        .glow-card::before { opacity: 0.5; }
+        @media (max-width: 767px) {
+            .glow-card::before { display: none; }
+            .destination-card:hover { transform: none; }
+        }
+
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-white antialiased">
+
+    <!-- Loading Screen -->
+    <div id="loader" role="status" aria-label="Loading">
+        <div class="text-2xl font-semibold tracking-tight mb-6">Airlines</div>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[100] bg-black/95 backdrop-blur-xl border-t border-white/10 p-4 transform translate-y-full transition-transform duration-500" role="dialog" aria-label="Cookie consent">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-white/70 text-center sm:text-left">We use cookies to improve your experience. By continuing you agree to our use of cookies. <a href="#cookies" class="underline underline-offset-2 text-white/90 hover:text-white">Cookie Policy</a></p>
+            <div class="flex gap-3">
+                <button id="cookie-accept" class="bg-white text-black text-sm font-medium px-5 py-2 rounded-full hover:scale-[1.02] transition-transform">Accept</button>
+                <button id="cookie-decline" class="border border-white/40 text-white/80 text-sm px-5 py-2 rounded-full hover:bg-white/10 transition-colors">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <div id="search-sticky-bar" aria-hidden="true">
+        <a href="#flights">Search flights</a>
+    </div>
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-white text-black shadow-lg opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center hover:scale-110" aria-label="Back to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 animate-fade-in-up delay-100" role="navigation" aria-label="Main">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#hero" class="text-white font-semibold text-xl tracking-tight hover:opacity-80 transition-opacity" aria-label="Airlines home">Airlines</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#destinations" class="text-white/90 font-normal hover:text-white transition-colors duration-200 text-sm">Destinations</a>
+                    <a href="#flights" class="text-white/90 font-normal hover:text-white transition-colors duration-200 text-sm">Flights</a>
+                    <a href="#pricing" class="text-white/90 font-normal hover:text-white transition-colors duration-200 text-sm">Pricing</a>
+                    <a href="#about" class="text-white/90 font-normal hover:text-white transition-colors duration-200 text-sm">About</a>
+                    <a href="#faq" class="text-white/90 font-normal hover:text-white transition-colors duration-200 text-sm">FAQ</a>
+                    <a href="#contact" class="text-white/90 font-normal hover:text-white transition-colors duration-200 text-sm">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center gap-3">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle dark/light mode">
+                        <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                        <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </button>
+                    <a href="#flights" class="border border-white/80 text-white font-normal hover:bg-white hover:text-black transition-all duration-300 rounded-full px-5 py-2 text-sm">Book Flight</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden text-white p-2 focus:outline-none hover:bg-white/10 rounded-lg transition-colors" aria-label="Open menu" aria-expanded="false">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden absolute top-20 left-0 right-0 bg-black/95 backdrop-blur-xl border-t border-white/10">
+            <div class="px-6 py-8 space-y-5">
+                <a href="#destinations" class="block text-white/90 font-normal hover:text-white transition-colors text-sm">Destinations</a>
+                <a href="#flights" class="block text-white/90 font-normal hover:text-white transition-colors text-sm">Flights</a>
+                <a href="#pricing" class="block text-white/90 font-normal hover:text-white transition-colors text-sm">Pricing</a>
+                <a href="#about" class="block text-white/90 font-normal hover:text-white transition-colors text-sm">About</a>
+                <a href="#faq" class="block text-white/90 font-normal hover:text-white transition-colors text-sm">FAQ</a>
+                <a href="#contact" class="block text-white/90 font-normal hover:text-white transition-colors text-sm">Contact</a>
+                <button id="theme-toggle-mobile" class="block text-white/90 text-sm">Toggle Theme</button>
+                <a href="#flights" class="mt-6 block w-full text-center border border-white/80 text-white font-normal hover:bg-white hover:text-black transition-all duration-300 rounded-full px-5 py-3 text-sm">Book Flight</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative w-full h-screen overflow-hidden" aria-label="Hero">
+        <div class="video-container absolute inset-0 parallax-video">
+            <video id="hero-video" class="absolute inset-0 w-full h-full object-cover"
+                src="https://cdn.sceneai.art/Hero%20Section%20Video/01d1f8de-fec0-4bf5-8b48-9fc2dbc8c6b0.mp4"
+                poster="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=60&fit=crop"
+                preload="metadata" loop muted playsinline
+                aria-hidden="true"></video>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/50"></div>
+        <div class="absolute inset-0 z-10 flex items-center justify-center px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-white/60 text-sm tracking-[0.2em] uppercase mb-6 animate-fade-in-up delay-200 font-medium">Flight search &amp; booking</p>
+                <h1 id="main-headline" class="text-white font-medium leading-[1.1] animate-fade-in-up delay-300 text-[38px] md:text-[56px]">
+                    Find flights<br>without the stress
+                </h1>
+                <p class="mt-6 text-white/80 font-normal max-w-xl mx-auto animate-fade-in-up delay-500 leading-relaxed text-[15px] md:text-[18px]">
+                    Search real offers, compare routes, and book in a few steps — clear pricing and honest test vs live mode.
+                </p>
+                <div class="mt-10 animate-fade-in-up delay-700 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#flights" class="inline-block bg-white text-black font-medium rounded-full shadow-lg hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-out text-[15px] px-8 py-3.5">Search Flights</a>
+                    <a href="#destinations" class="inline-block border border-white/60 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-[15px] px-8 py-3.5">Explore Destinations</a>
+                </div>
+                <div class="mt-16 animate-fade-in delay-900">
+                    <div class="flex items-center justify-center space-x-12 text-white/50">
+                        <div class="text-center">
+                            <div class="text-2xl font-semibold text-white/90 counter" data-target="50" data-suffix="+">0</div>
+                            <div class="text-xs mt-1">Countries</div>
+                        </div>
+                        <div class="w-px h-8 bg-white/20"></div>
+                        <div class="text-center">
+                            <div class="text-2xl font-semibold text-white/90 counter" data-target="10000" data-suffix="+" data-format="k">0</div>
+                            <div class="text-xs mt-1">Travelers</div>
+                        </div>
+                        <div class="w-px h-8 bg-white/20"></div>
+                        <div class="text-center">
+                            <div class="text-2xl font-semibold text-white/90 counter" data-target="4.9" data-decimals="1">0</div>
+                            <div class="text-xs mt-1">Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-fade-in delay-900">
+            <a href="#destinations" class="flex flex-col items-center text-white/40 hover:text-white/70 transition-colors" aria-label="Scroll to destinations">
+                <span class="text-[10px] tracking-widest uppercase mb-2">Scroll</span>
+                <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section id="stats" class="relative py-16 bg-[#080808] border-y border-white/5" aria-label="Company statistics">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="reveal">
+                    <div class="text-3xl md:text-4xl font-semibold counter" data-target="50" data-suffix="+">0</div>
+                    <div class="text-white/40 text-sm mt-2">Countries</div>
+                </div>
+                <div class="reveal" style="transition-delay:0.1s">
+                    <div class="text-3xl md:text-4xl font-semibold counter" data-target="10000" data-suffix="+" data-format="k">0</div>
+                    <div class="text-white/40 text-sm mt-2">Happy Travelers</div>
+                </div>
+                <div class="reveal" style="transition-delay:0.2s">
+                    <div class="text-3xl md:text-4xl font-semibold counter" data-target="11" data-suffix="+">0</div>
+                    <div class="text-white/40 text-sm mt-2">Years Experience</div>
+                </div>
+                <div class="reveal" style="transition-delay:0.3s">
+                    <div class="text-3xl md:text-4xl font-semibold counter" data-target="27" data-suffix="">0</div>
+                    <div class="text-white/40 text-sm mt-2">Awards Won</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="relative py-20 md:py-28 bg-[#0a0a0a]" aria-label="Popular destinations">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Discover</p>
+                <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">Popular Destinations</h2>
+                <p class="mt-4 text-white/50 max-w-lg mx-auto text-base">Handpicked locations that promise unforgettable experiences and breathtaking moments.</p>
+            </div>
+
+            <!-- Filter buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" role="group" aria-label="Filter destinations">
+                <button class="filter-btn active px-5 py-2 rounded-full text-sm border border-white/20 bg-white text-black transition-all" data-filter="all">All</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm border border-white/20 text-white/80 hover:bg-white/10 transition-all" data-filter="Asia">Asia</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm border border-white/20 text-white/80 hover:bg-white/10 transition-all" data-filter="Europe">Europe</button>
+                <button class="filter-btn px-5 py-2 rounded-full text-sm border border-white/20 text-white/80 hover:bg-white/10 transition-all" data-filter="Tropical">Tropical</button>
+            </div>
+
+            <div id="destinations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+                <!-- Cards injected or static for now -->
+                <article class="destination-card glow-card reveal-scale group relative overflow-hidden rounded-2xl bg-[#111] cursor-pointer aspect-auto" data-region="Asia" data-name="Kyoto, Japan" data-price="1299">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img data-src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=750&fit=crop" alt="Kyoto, Japan — ancient temples and cherry blossoms" class="w-full h-full object-cover lazy" width="600" height="750">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-medium text-white">Kyoto, Japan</h3>
+                                <p class="text-white/60 text-sm mt-1">Ancient temples & cherry blossoms</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md rounded-full px-3 py-1"><span class="text-sm font-medium">$1,299</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="destination-card glow-card reveal-scale group relative overflow-hidden rounded-2xl bg-[#111] cursor-pointer aspect-auto" data-region="Europe" data-name="Santorini, Greece" data-price="1599">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img data-src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&h=750&fit=crop" alt="Santorini, Greece — white cliffs and azure waters" class="w-full h-full object-cover lazy" width="600" height="750">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-medium text-white">Santorini, Greece</h3>
+                                <p class="text-white/60 text-sm mt-1">White cliffs & azure waters</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md rounded-full px-3 py-1"><span class="text-sm font-medium">$1,599</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="destination-card glow-card reveal-scale group relative overflow-hidden rounded-2xl bg-[#111] cursor-pointer aspect-auto" data-region="Tropical" data-name="Bali, Indonesia" data-price="899">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img data-src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&h=750&fit=crop" alt="Bali, Indonesia — tropical paradise and culture" class="w-full h-full object-cover lazy" width="600" height="750">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-medium text-white">Bali, Indonesia</h3>
+                                <p class="text-white/60 text-sm mt-1">Tropical paradise & culture</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md rounded-full px-3 py-1"><span class="text-sm font-medium">$899</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="destination-card glow-card reveal-scale group relative overflow-hidden rounded-2xl bg-[#111] cursor-pointer aspect-auto" data-region="Europe" data-name="Paris, France" data-price="1199">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img data-src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&h=750&fit=crop" alt="Paris, France — romance and iconic landmarks" class="w-full h-full object-cover lazy" width="600" height="750">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-medium text-white">Paris, France</h3>
+                                <p class="text-white/60 text-sm mt-1">Romance & iconic landmarks</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md rounded-full px-3 py-1"><span class="text-sm font-medium">$1,199</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="destination-card glow-card reveal-scale group relative overflow-hidden rounded-2xl bg-[#111] cursor-pointer aspect-auto" data-region="Europe" data-name="Cinque Terre, Italy" data-price="1399">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img data-src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&h=750&fit=crop" alt="Cinque Terre, Italy — colorful villages and coastlines" class="w-full h-full object-cover lazy" width="600" height="750">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-medium text-white">Cinque Terre, Italy</h3>
+                                <p class="text-white/60 text-sm mt-1">Colorful villages & coastlines</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md rounded-full px-3 py-1"><span class="text-sm font-medium">$1,399</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="destination-card glow-card reveal-scale group relative overflow-hidden rounded-2xl bg-[#111] cursor-pointer aspect-auto" data-region="Tropical" data-name="Maldives" data-price="2199">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img data-src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=750&fit=crop" alt="Maldives — overwater villas and reefs" class="w-full h-full object-cover lazy" width="600" height="750">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-medium text-white">Maldives</h3>
+                                <p class="text-white/60 text-sm mt-1">Overwater villas & reefs</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md rounded-full px-3 py-1"><span class="text-sm font-medium">$2,199</span></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Search / Booking Section -->
+    <section id="flights" class="relative py-20 md:py-28 bg-[#080808]" aria-label="Flight search">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10 reveal">
+                <p class="section-kicker">Book Now</p>
+                <h2 class="section-title">Find your flight</h2>
+                <p class="mt-4 text-white/50 max-w-lg mx-auto text-base">Search live offers · pick a route · continue to booking</p>
+            </div>
+
+            <div id="flight-search-panel" class="reveal relative rounded-[1.75rem] border border-white/12 bg-[#0c0c0c]/80 backdrop-blur-xl shadow-2xl shadow-black/50 overflow-hidden">
+                <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                <div class="p-5 sm:p-7 md:p-8">
+                    <!-- Trip type -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                        <div class="inline-flex p-1 rounded-full bg-white/[0.06] border border-white/10" role="group" aria-label="Trip type">
+                            <button type="button" id="trip-round" class="trip-type-btn text-xs font-medium px-4 py-2 rounded-full bg-white text-black transition-all" data-trip="round">Round trip</button>
+                            <button type="button" id="trip-oneway" class="trip-type-btn text-xs font-medium px-4 py-2 rounded-full text-white/60 hover:text-white transition-all" data-trip="oneway">One way</button>
+                        </div>
+                        <span class="text-[11px] text-white/35">IATA codes work best · e.g. JFK, LHR</span>
+                    </div>
+
+                    <form id="flight-search-form" class="space-y-3" novalidate>
+                        <!-- From / To with swap -->
+                        <div class="relative grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 items-stretch">
+                            <div class="rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-3.5 focus-within:border-white/35 focus-within:bg-white/[0.06] transition-all">
+                                <label for="origin" class="block text-[10px] uppercase tracking-[0.15em] text-white/40 mb-1.5">From</label>
+                                <input type="text" id="origin" name="origin" placeholder="City or airport" required autocomplete="off"
+                                    class="w-full bg-transparent border-0 p-0 text-white placeholder-white/25 text-[15px] font-medium focus:ring-0 focus:outline-none newsletter-input" maxlength="80">
+                            </div>
+                            <div class="flex sm:flex-col items-center justify-center">
+                                <button type="button" id="swap-airports" class="w-10 h-10 rounded-full border border-white/15 bg-[#0a0a0a] text-white/60 hover:text-white hover:border-white/40 transition-all flex items-center justify-center" aria-label="Swap from and to">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+                                </button>
+                            </div>
+                            <div class="rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-3.5 focus-within:border-white/35 focus-within:bg-white/[0.06] transition-all">
+                                <label for="destination" class="block text-[10px] uppercase tracking-[0.15em] text-white/40 mb-1.5">To</label>
+                                <input type="text" id="destination" name="destination" placeholder="City or airport" required autocomplete="off"
+                                    class="w-full bg-transparent border-0 p-0 text-white placeholder-white/25 text-[15px] font-medium focus:ring-0 focus:outline-none newsletter-input" maxlength="80">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-3.5 focus-within:border-white/35 transition-all">
+                                <label for="depart-date" class="block text-[10px] uppercase tracking-[0.15em] text-white/40 mb-1.5">Depart</label>
+                                <input type="date" id="depart-date" name="depart" required
+                                    class="w-full bg-transparent border-0 p-0 text-white text-sm focus:ring-0 focus:outline-none newsletter-input">
+                            </div>
+                            <div id="return-wrap" class="rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-3.5 focus-within:border-white/35 transition-all">
+                                <label for="return-date" class="block text-[10px] uppercase tracking-[0.15em] text-white/40 mb-1.5">Return</label>
+                                <input type="date" id="return-date" name="return"
+                                    class="w-full bg-transparent border-0 p-0 text-white text-sm focus:ring-0 focus:outline-none newsletter-input">
+                            </div>
+                            <div class="rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-3.5 focus-within:border-white/35 transition-all">
+                                <label for="passengers" class="block text-[10px] uppercase tracking-[0.15em] text-white/40 mb-1.5">Travelers</label>
+                                <select id="passengers" name="passengers"
+                                    class="w-full bg-transparent border-0 p-0 text-white text-sm focus:ring-0 focus:outline-none newsletter-input">
+                                    <option value="1">1 Adult</option>
+                                    <option value="2">2 Adults</option>
+                                    <option value="3">3 Adults</option>
+                                    <option value="4">4 Adults</option>
+                                </select>
+                            </div>
+                            <div class="rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-3.5 focus-within:border-white/35 transition-all">
+                                <label for="cabin" class="block text-[10px] uppercase tracking-[0.15em] text-white/40 mb-1.5">Cabin</label>
+                                <select id="cabin" name="cabin"
+                                    class="w-full bg-transparent border-0 p-0 text-white text-sm focus:ring-0 focus:outline-none newsletter-input">
+                                    <option value="economy">Economy</option>
+                                    <option value="premium-economy">Premium Economy</option>
+                                    <option value="business">Business</option>
+                                    <option value="first">First</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
+                            <button type="submit" id="search-flights-btn"
+                                class="w-full sm:w-auto sm:min-w-[220px] bg-white text-black font-medium rounded-full px-8 py-3.5 hover:scale-[1.02] active:scale-[0.99] transition-transform text-sm shadow-lg shadow-white/10">
+                                Search Flights
+                            </button>
+                            <p class="text-[11px] text-white/35 leading-relaxed max-w-sm">
+                                Test mode uses simulated offers. Live tickets need a verified Duffel account.
+                            </p>
+                        </div>
+                    </form>
+
+                    <div id="flight-results" class="mt-8 hidden border-t border-white/10 pt-8">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-medium">Flight offers</h3>
+                            <span id="results-count" class="text-sm text-white/50"></span>
+                        </div>
+                        <p class="text-xs text-white/40 mb-4">Select an offer → passenger details → confirm (test pays with Duffel balance).</p>
+                        <div id="flight-list" class="space-y-3"></div>
+                        <div id="flight-extras" class="mt-6 pt-6 border-t border-white/10 hidden">
+                            <p class="text-sm text-white/50 mb-3">Complete your trip</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://gettransfer.tp.st/gCCM7JBM" target="_blank" rel="noopener noreferrer sponsored"
+                                    class="inline-flex items-center gap-2 text-sm border border-white/15 text-white/90 px-4 py-2.5 rounded-full hover:bg-white/5 hover:border-white/30 transition-all">
+                                    Airport transfer
+                                </a>
+                                <a href="https://klook.tp.st/BRfHB3lF" target="_blank" rel="noopener noreferrer sponsored"
+                                    class="inline-flex items-center gap-2 text-sm border border-white/15 text-white/90 px-4 py-2.5 rounded-full hover:bg-white/5 hover:border-white/30 transition-all">
+                                    Things to do
+                                </a>
+                            </div>
+                        </div>
+                        <p id="flight-error" class="text-red-400 text-sm mt-4 hidden"></p>
+                        <div id="flight-loading" class="mt-4 hidden space-y-3" role="status">
+                            <p class="text-white/50 text-sm">Searching flights… first load may take a few seconds.</p>
+                            <div class="flight-skeleton"></div>
+                            <div class="flight-skeleton"></div>
+                            <div class="flight-skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-white/35 text-xs mt-6 max-w-2xl mx-auto leading-relaxed">
+                Optional partners may pay a commission when you use our links.
+                <a href="#disclosures" class="underline underline-offset-2 text-white/55 hover:text-white/80">Disclosures</a>
+            </p>
+        </div>
+    </section>
+
+
+    <!-- How booking works -->
+    <section id="how-booking" class="relative py-16 md:py-20 bg-[#0a0a0a] border-t border-white/5" aria-label="How booking works">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-10 reveal">
+                <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-3 font-medium">Simple process</p>
+                <h2 class="text-2xl md:text-3xl font-medium text-white">How booking works</h2>
+                <p class="mt-3 text-white/45 text-sm max-w-lg mx-auto">Three steps. Search and book via Duffel — test mode uses simulated offers until live verification is complete.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 reveal">
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center md:text-left">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium mx-auto md:mx-0 mb-4">1</div>
+                    <h3 class="text-lg font-medium text-white mb-2">Search</h3>
+                    <p class="text-sm text-white/50 leading-relaxed">Enter cities or airport codes, dates, and cabin. We request live offers from Duffel.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center md:text-left">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium mx-auto md:mx-0 mb-4">2</div>
+                    <h3 class="text-lg font-medium text-white mb-2">Select</h3>
+                    <p class="text-sm text-white/50 leading-relaxed">Compare times and prices, then select an offer. Offers can expire — search again if needed.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center md:text-left">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium mx-auto md:mx-0 mb-4">3</div>
+                    <h3 class="text-lg font-medium text-white mb-2">Confirm</h3>
+                    <p class="text-sm text-white/50 leading-relaxed">Enter passenger details and confirm. Test bookings use Duffel balance; live needs verification.</p>
+                </div>
+            </div>
+            <p class="text-center text-xs text-white/35 mt-8">Need help? <a href="mailto:ankushchauhan192010@gmail.com" class="text-white/60 underline underline-offset-2 hover:text-white">Email support</a> — we monitor this inbox.</p>
+        </div>
+    </section>
+
+    <!-- Popular routes — stronger cards -->
+    <section id="routes" class="relative py-20 md:py-28 bg-[#0a0a0a] border-t border-white/5" aria-label="Popular routes">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 reveal">
+                <div>
+                    <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-3 font-medium">Recommended for you</p>
+                    <h2 class="text-2xl md:text-4xl font-medium text-white">Popular routes</h2>
+                    <p class="mt-2 text-white/45 text-sm max-w-md">Tap a card to fill the search form, then run Search Flights for live offers.</p>
+                </div>
+                <a href="#flights" class="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors border border-white/15 rounded-full px-4 py-2 hover:border-white/30">
+                    Search all flights
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+                <button type="button" class="route-chip group relative text-left rounded-3xl border border-white/10 overflow-hidden min-h-[168px] hover:border-white/30 hover:scale-[1.02] transition-all duration-300" data-from="New York" data-to="London">
+                    <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/80 via-slate-900/60 to-[#0a0a0a]"></div>
+                    <div class="absolute inset-0 bg-white/[0.03] group-hover:bg-white/[0.06] transition-colors"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-between">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-white/50 font-medium">Transatlantic</span>
+                            <span class="text-[10px] text-white/40 border border-white/15 rounded-full px-2 py-0.5">JFK · LHR</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-medium text-white tracking-tight">New York</p>
+                            <p class="text-sm text-white/45 my-1">to</p>
+                            <p class="text-xl font-medium text-white tracking-tight">London</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                            <span class="text-xs text-white/50 group-hover:text-white/80 transition-colors">Search this route</span>
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-white group-hover:text-black transition-all text-sm">→</span>
+                        </div>
+                    </div>
+                </button>
+                <button type="button" class="route-chip group relative text-left rounded-3xl border border-white/10 overflow-hidden min-h-[168px] hover:border-white/30 hover:scale-[1.02] transition-all duration-300" data-from="Los Angeles" data-to="Tokyo">
+                    <div class="absolute inset-0 bg-gradient-to-b from-blue-900/70 via-slate-900/50 to-[#0a0a0a]"></div>
+                    <div class="absolute inset-0 bg-white/[0.03] group-hover:bg-white/[0.06] transition-colors"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-between">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-white/50 font-medium">Pacific</span>
+                            <span class="text-[10px] text-white/40 border border-white/15 rounded-full px-2 py-0.5">LAX · NRT</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-medium text-white tracking-tight">Los Angeles</p>
+                            <p class="text-sm text-white/45 my-1">to</p>
+                            <p class="text-xl font-medium text-white tracking-tight">Tokyo</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                            <span class="text-xs text-white/50 group-hover:text-white/80 transition-colors">Search this route</span>
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-white group-hover:text-black transition-all text-sm">→</span>
+                        </div>
+                    </div>
+                </button>
+                <button type="button" class="route-chip group relative text-left rounded-3xl border border-white/10 overflow-hidden min-h-[168px] hover:border-white/30 hover:scale-[1.02] transition-all duration-300" data-from="Dubai" data-to="Paris">
+                    <div class="absolute inset-0 bg-gradient-to-b from-amber-900/60 via-slate-900/50 to-[#0a0a0a]"></div>
+                    <div class="absolute inset-0 bg-white/[0.03] group-hover:bg-white/[0.06] transition-colors"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-between">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-white/50 font-medium">Europe · Gulf</span>
+                            <span class="text-[10px] text-white/40 border border-white/15 rounded-full px-2 py-0.5">DXB · CDG</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-medium text-white tracking-tight">Dubai</p>
+                            <p class="text-sm text-white/45 my-1">to</p>
+                            <p class="text-xl font-medium text-white tracking-tight">Paris</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                            <span class="text-xs text-white/50 group-hover:text-white/80 transition-colors">Search this route</span>
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-white group-hover:text-black transition-all text-sm">→</span>
+                        </div>
+                    </div>
+                </button>
+                <button type="button" class="route-chip group relative text-left rounded-3xl border border-white/10 overflow-hidden min-h-[168px] hover:border-white/30 hover:scale-[1.02] transition-all duration-300" data-from="Singapore" data-to="Bali">
+                    <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/60 via-slate-900/50 to-[#0a0a0a]"></div>
+                    <div class="absolute inset-0 bg-white/[0.03] group-hover:bg-white/[0.06] transition-colors"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-between">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-white/50 font-medium">Southeast Asia</span>
+                            <span class="text-[10px] text-white/40 border border-white/15 rounded-full px-2 py-0.5">SIN · DPS</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-medium text-white tracking-tight">Singapore</p>
+                            <p class="text-sm text-white/45 my-1">to</p>
+                            <p class="text-xl font-medium text-white tracking-tight">Bali</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                            <span class="text-xs text-white/50 group-hover:text-white/80 transition-colors">Search this route</span>
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-white group-hover:text-black transition-all text-sm">→</span>
+                        </div>
+                    </div>
+                </button>
+                <button type="button" class="route-chip group relative text-left rounded-3xl border border-white/10 overflow-hidden min-h-[168px] hover:border-white/30 hover:scale-[1.02] transition-all duration-300" data-from="Delhi" data-to="Bangkok">
+                    <div class="absolute inset-0 bg-gradient-to-b from-rose-900/50 via-slate-900/50 to-[#0a0a0a]"></div>
+                    <div class="absolute inset-0 bg-white/[0.03] group-hover:bg-white/[0.06] transition-colors"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-between">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-white/50 font-medium">Asia</span>
+                            <span class="text-[10px] text-white/40 border border-white/15 rounded-full px-2 py-0.5">DEL · BKK</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-medium text-white tracking-tight">Delhi</p>
+                            <p class="text-sm text-white/45 my-1">to</p>
+                            <p class="text-xl font-medium text-white tracking-tight">Bangkok</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                            <span class="text-xs text-white/50 group-hover:text-white/80 transition-colors">Search this route</span>
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-white group-hover:text-black transition-all text-sm">→</span>
+                        </div>
+                    </div>
+                </button>
+                <button type="button" class="route-chip group relative text-left rounded-3xl border border-white/10 overflow-hidden min-h-[168px] hover:border-white/30 hover:scale-[1.02] transition-all duration-300" data-from="San Francisco" data-to="Seoul">
+                    <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/50 via-slate-900/50 to-[#0a0a0a]"></div>
+                    <div class="absolute inset-0 bg-white/[0.03] group-hover:bg-white/[0.06] transition-colors"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-between">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-white/50 font-medium">Transpacific</span>
+                            <span class="text-[10px] text-white/40 border border-white/15 rounded-full px-2 py-0.5">SFO · ICN</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-medium text-white tracking-tight">San Francisco</p>
+                            <p class="text-sm text-white/45 my-1">to</p>
+                            <p class="text-xl font-medium text-white tracking-tight">Seoul</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                            <span class="text-xs text-white/50 group-hover:text-white/80 transition-colors">Search this route</span>
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-white group-hover:text-black transition-all text-sm">→</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="relative py-20 md:py-28 bg-[#0a0a0a]" aria-label="Pricing plans">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Packages</p>
+                <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">Simple, Transparent Pricing</h2>
+                <p class="mt-4 text-white/50 max-w-lg mx-auto text-base">Choose the level of service that fits your travel style.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="reveal-scale bg-white/[0.02] border border-white/10 rounded-2xl p-8 flex flex-col">
+                    <h3 class="text-lg font-medium text-white/70">Basic</h3>
+                    <div class="mt-4 mb-6">
+                        <span class="text-4xl font-semibold">$49</span>
+                        <span class="text-white/40 text-sm">/ trip planning</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-white/60 flex-1">
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Personalized itinerary</li>
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Email support</li>
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Hotel recommendations</li>
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Flight search assistance</li>
+                    </ul>
+                    <a href="#contact" class="mt-8 block text-center border border-white/30 rounded-full py-3 text-sm hover:bg-white hover:text-black transition-all">Get Started</a>
+                </div>
+                <div class="reveal-scale pricing-featured bg-white text-black rounded-2xl p-8 flex flex-col relative scale-105 shadow-2xl" style="transition-delay:0.1s">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded-full">Most Popular</div>
+                    <h3 class="text-lg font-medium text-black/70">Premium</h3>
+                    <div class="mt-4 mb-6">
+                        <span class="text-4xl font-semibold">$149</span>
+                        <span class="text-black/50 text-sm">/ trip</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-black/70 flex-1">
+                        <li class="flex items-start gap-2"><span>✓</span> Everything in Basic</li>
+                        <li class="flex items-start gap-2"><span>✓</span> 24/7 chat support</li>
+                        <li class="flex items-start gap-2"><span>✓</span> Priority booking</li>
+                        <li class="flex items-start gap-2"><span>✓</span> Travel insurance guidance</li>
+                        <li class="flex items-start gap-2"><span>✓</span> Local experiences</li>
+                    </ul>
+                    <a href="#contact" class="mt-8 block text-center bg-black text-white rounded-full py-3 text-sm hover:scale-[1.02] transition-transform">Choose Premium</a>
+                </div>
+                <div class="reveal-scale bg-white/[0.02] border border-white/10 rounded-2xl p-8 flex flex-col" style="transition-delay:0.2s">
+                    <h3 class="text-lg font-medium text-white/70">Luxury</h3>
+                    <div class="mt-4 mb-6">
+                        <span class="text-4xl font-semibold">$399</span>
+                        <span class="text-white/40 text-sm">/ trip</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-white/60 flex-1">
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Everything in Premium</li>
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Dedicated travel concierge</li>
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Private transfers</li>
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> VIP airport assistance</li>
+                        <li class="flex items-start gap-2"><span class="text-white/40">✓</span> Custom experiences</li>
+                    </ul>
+                    <a href="#contact" class="mt-8 block text-center border border-white/30 rounded-full py-3 text-sm hover:bg-white hover:text-black transition-all">Go Luxury</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="about" class="relative py-20 md:py-28 bg-[#080808]" aria-label="About Airlines">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-left">
+                    <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">About</p>
+                    <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">We help you plan.<br>Partners complete the booking.</h2>
+                    <p class="mt-6 text-white/50 leading-relaxed text-base">Airlines is a travel site for discovering destinations and starting flight searches. When you book, you continue on independent partner platforms. We focus on clear design, honest pricing notices, and an easy path from idea to partner checkout.</p>
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium">Clear search flow</h4>
+                                <p class="text-white/40 text-sm mt-1">City or airport, dates, and cabin—then book on a partner with live fares</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium">Honest handoff</h4>
+                                <p class="text-white/40 text-sm mt-1">We don’t pretend sample fares are live tickets—you confirm price before you pay</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium">Trip extras</h4>
+                                <p class="text-white/40 text-sm mt-1">Optional transfers and activities via the same partner network</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 reveal-right">
+                    <div class="feature-card rounded-2xl p-6 bg-white/[0.02] border border-white/5">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="text-white font-medium mb-2">Worldwide routes</h3>
+                        <p class="text-white/40 text-sm leading-relaxed">Search major cities and airports, then book where inventory is live.</p>
+                    </div>
+                    <div class="feature-card rounded-2xl p-6 bg-white/[0.02] border border-white/5 mt-8">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="text-white font-medium mb-2">Fast path to book</h3>
+                        <p class="text-white/40 text-sm leading-relaxed">One search on Airlines, checkout on the partner—no fake “live” cart here.</p>
+                    </div>
+                    <div class="feature-card rounded-2xl p-6 bg-white/[0.02] border border-white/5">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3 class="text-white font-medium mb-2">Transparent links</h3>
+                        <p class="text-white/40 text-sm leading-relaxed">Affiliate relationships are disclosed. Your price is set by the partner.</p>
+                    </div>
+                    <div class="feature-card rounded-2xl p-6 bg-white/[0.02] border border-white/5 mt-8">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <h3 class="text-white font-medium mb-2">Destinations first</h3>
+                        <p class="text-white/40 text-sm leading-relaxed">Browse places, then search flights—built for planning, not pressure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="relative py-20 md:py-28 bg-[#0a0a0a]" aria-label="How it works">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 reveal">
+                <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Process</p>
+                <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">How It Works</h2>
+                <p class="mt-4 text-white/50 max-w-lg mx-auto text-base">From idea to partner checkout in four clear steps.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="reveal text-center group">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/[0.03] border border-white/10 mb-6 group-hover:bg-white/[0.06] transition-colors">
+                        <span class="text-2xl font-light text-white/60">01</span>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-3">Pick a destination</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">Browse places or jump in with a city and dates on Search Flights.</p>
+                </div>
+                <div class="reveal text-center group" style="transition-delay:0.15s">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/[0.03] border border-white/10 mb-6 group-hover:bg-white/[0.06] transition-colors">
+                        <span class="text-2xl font-light text-white/60">02</span>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-3">Review sample results</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">See how options look on our page—fares here are examples only.</p>
+                </div>
+                <div class="reveal text-center group" style="transition-delay:0.3s">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/[0.03] border border-white/10 mb-6 group-hover:bg-white/[0.06] transition-colors">
+                        <span class="text-2xl font-light text-white/60">03</span>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-3">Book on a partner</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">Open the partner site to see live price, rules, and pay there.</p>
+                </div>
+                <div class="reveal text-center group" style="transition-delay:0.45s">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/[0.03] border border-white/10 mb-6 group-hover:bg-white/[0.06] transition-colors">
+                        <span class="text-2xl font-light text-white/60">04</span>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-3">Add trip extras</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">Optional transfers or activities through the same partner network.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="relative py-20 md:py-28 bg-[#080808]" aria-label="Frequently asked questions">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">FAQ</p>
+                <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">Common Questions</h2>
+            </div>
+            <div class="space-y-3" id="faq-list">
+                <div class="faq-item border border-white/10 rounded-2xl overflow-hidden reveal">
+                    <button class="faq-trigger w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
+                        <span class="font-medium text-white">How far in advance should I book?</span>
+                        <svg class="faq-icon w-5 h-5 text-white/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                    <div class="faq-answer px-5 text-white/50 text-sm leading-relaxed">
+                        <p class="pb-5">We recommend booking 2–4 months in advance for popular destinations and peak seasons. For last-minute trips we can still help, though availability and pricing may vary.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-white/10 rounded-2xl overflow-hidden reveal">
+                    <button class="faq-trigger w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
+                        <span class="font-medium text-white">Can I customize my itinerary?</span>
+                        <svg class="faq-icon w-5 h-5 text-white/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                    <div class="faq-answer px-5 text-white/50 text-sm leading-relaxed">
+                        <p class="pb-5">Absolutely. Every itinerary is built around your interests, pace, and budget. You can request changes at any stage before departure.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-white/10 rounded-2xl overflow-hidden reveal">
+                    <button class="faq-trigger w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
+                        <span class="font-medium text-white">What is included in the price?</span>
+                        <svg class="faq-icon w-5 h-5 text-white/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                    <div class="faq-answer px-5 text-white/50 text-sm leading-relaxed">
+                        <p class="pb-5">Package prices typically cover accommodation, selected experiences, and our planning fee. Flights can be booked separately through our flight search or included on request.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-white/10 rounded-2xl overflow-hidden reveal">
+                    <button class="faq-trigger w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
+                        <span class="font-medium text-white">Do you offer travel insurance?</span>
+                        <svg class="faq-icon w-5 h-5 text-white/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                    <div class="faq-answer px-5 text-white/50 text-sm leading-relaxed">
+                        <p class="pb-5">Yes. We partner with trusted providers and can include comprehensive coverage with every booking. Our team will walk you through the options.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-white/10 rounded-2xl overflow-hidden reveal">
+                    <button class="faq-trigger w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
+                        <span class="font-medium text-white">What is your cancellation policy?</span>
+                        <svg class="faq-icon w-5 h-5 text-white/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                    <div class="faq-answer px-5 text-white/50 text-sm leading-relaxed">
+                        <p class="pb-5">Flexible options are available. Most packages allow free cancellation up to 30 days before departure. Exact terms depend on suppliers and will be clearly stated at booking.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-white/10 rounded-2xl overflow-hidden reveal">
+                    <button class="faq-trigger w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
+                        <span class="font-medium text-white">Is the flight search free to use?</span>
+                        <svg class="faq-icon w-5 h-5 text-white/50 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                    <div class="faq-answer px-5 text-white/50 text-sm leading-relaxed">
+                        <p class="pb-5">Yes. Searching for flights is completely free. You only pay if you decide to book through us or our partners.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" class="relative py-20 md:py-28 bg-[#0a0a0a]" aria-label="Photo gallery">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Moments</p>
+                <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">Travel Gallery</h2>
+            </div>
+            <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4" id="gallery-grid">
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=500&fit=crop" alt="Tropical beach" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="500">
+                </div>
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&h=300&fit=crop" alt="Mountain lake" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="300">
+                </div>
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1530789256257-4821c01986c9?w=400&h=550&fit=crop" alt="City at night" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="550">
+                </div>
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=350&fit=crop" alt="Road trip" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="350">
+                </div>
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop" alt="Snow mountains" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="500">
+                </div>
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop" alt="Desert dunes" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="300">
+                </div>
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&h=480&fit=crop" alt="Luxury resort" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="480">
+                </div>
+                <div class="break-inside-avoid reveal-scale cursor-pointer gallery-item overflow-hidden rounded-xl">
+                    <img data-src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=320&fit=crop" alt="Lake reflection" class="w-full lazy rounded-xl hover:scale-[1.02] transition-transform duration-500" width="400" height="320">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[90] bg-black/95 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Image lightbox">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white/70 hover:text-white p-2" aria-label="Close lightbox">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-full rounded-lg object-contain">
+    </div>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="relative py-20 md:py-28 bg-[#080808]" aria-label="Traveler stories">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Testimonials</p>
+                <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">Traveler Stories</h2>
+                <p class="mt-4 text-white/50 max-w-lg mx-auto text-base">Real experiences from real travelers who discovered the world with us.</p>
+            </div>
+            <div id="testimonial-track" class="grid md:grid-cols-3 gap-6 stagger-children overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none flex md:grid">
+                <article class="testimonial-card reveal-scale bg-white/[0.02] border border-white/5 rounded-2xl p-8 min-w-[85vw] md:min-w-0 snap-center">
+                    <div class="flex items-center mb-6">
+                        <img data-src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Sarah Mitchell" class="w-12 h-12 rounded-full object-cover mr-4 lazy" width="48" height="48">
+                        <div>
+                            <h4 class="text-white font-medium">Sarah Mitchell</h4>
+                            <p class="text-white/40 text-sm">Traveled to Japan</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4 text-yellow-500/80" aria-label="5 out of 5 stars">★★★★★</div>
+                    <p class="text-white/70 leading-relaxed">"Airlines transformed our honeymoon into something magical. Every detail was perfect, from the ryokan in Kyoto to the private tea ceremony. Absolutely stress-free."</p>
+                </article>
+                <article class="testimonial-card reveal-scale bg-white/[0.02] border border-white/5 rounded-2xl p-8 min-w-[85vw] md:min-w-0 snap-center">
+                    <div class="flex items-center mb-6">
+                        <img data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="James Chen" class="w-12 h-12 rounded-full object-cover mr-4 lazy" width="48" height="48">
+                        <div>
+                            <h4 class="text-white font-medium">James Chen</h4>
+                            <p class="text-white/40 text-sm">Traveled to Greece</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4 text-yellow-500/80" aria-label="5 out of 5 stars">★★★★★</div>
+                    <p class="text-white/70 leading-relaxed">"I've traveled with many agencies, but Airlines is on another level. The local guides were incredible, and having everything handled meant I could actually relax and enjoy Santorini."</p>
+                </article>
+                <article class="testimonial-card reveal-scale bg-white/[0.02] border border-white/5 rounded-2xl p-8 min-w-[85vw] md:min-w-0 snap-center">
+                    <div class="flex items-center mb-6">
+                        <img data-src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Emma Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4 lazy" width="48" height="48">
+                        <div>
+                            <h4 class="text-white font-medium">Emma Rodriguez</h4>
+                            <p class="text-white/40 text-sm">Traveled to Bali</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4 text-yellow-500/80" aria-label="5 out of 5 stars">★★★★★</div>
+                    <p class="text-white/70 leading-relaxed">"Solo travel always scared me, but Airlines made it feel safe and exciting. The small group dynamic was perfect — I made friends for life in Bali. Already booking my next trip!"</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section id="contact" class="relative py-20 md:py-28 bg-[#0a0a0a] overflow-hidden" aria-label="Get started">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10 reveal">
+            <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Begin Your Journey</p>
+            <h2 class="text-3xl md:text-5xl font-medium text-white leading-tight">Ready to Explore<br>the World?</h2>
+            <p class="mt-6 text-white/50 max-w-lg mx-auto mb-10 text-base">Join 10,000+ travelers who have discovered stress-free, meaningful travel with Airlines.</p>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto" novalidate>
+                <div class="w-full sm:flex-1 relative">
+                    <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required
+                        class="newsletter-input w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder-white/30 text-sm focus:border-white/30 transition-all"
+                        aria-describedby="email-error">
+                    <p id="email-error" class="absolute -bottom-6 left-4 text-red-400 text-xs hidden" role="alert">Please enter a valid email address.</p>
+                </div>
+                <button type="submit" class="w-full sm:w-auto bg-white text-black font-medium rounded-full px-8 py-4 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 text-sm whitespace-nowrap">Get Started</button>
+            </form>
+            <p class="mt-8 text-white/30 text-xs">No spam, ever. Unsubscribe anytime.</p>
+            <div class="mt-12 pt-10 border-t border-white/10 max-w-md mx-auto">
+                <p class="text-white/40 text-sm tracking-[0.15em] uppercase mb-2 font-medium">Support</p>
+                <p class="text-white/60 text-sm mb-3">Questions about a search or booking? Email us — this inbox is monitored.</p>
+                <a href="mailto:ankushchauhan192010@gmail.com" class="inline-flex items-center gap-2 text-white font-medium text-sm border border-white/20 rounded-full px-5 py-2.5 hover:bg-white/5 hover:border-white/40 transition-all">
+                    ankushchauhan192010@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight checkout (Duffel order) -->
+    <div id="checkout-modal" class="fixed inset-0 z-[90] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+        <div class="bg-[#111] border border-white/10 rounded-3xl p-6 md:p-8 max-w-lg w-full relative max-h-[90vh] overflow-y-auto">
+            <button type="button" id="checkout-close" class="absolute top-4 right-4 text-white/50 hover:text-white" aria-label="Close">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+                        <h3 id="checkout-title" class="text-xl font-medium mb-1 pr-8">Passenger details</h3>
+            <p id="checkout-summary" class="text-white/50 text-sm mb-4"></p>
+            <form id="checkout-form" class="space-y-4">
+                <div id="pax-fields" class="space-y-6"></div>
+                <p class="text-xs text-white/40">Test mode uses Duffel <strong class="text-white/60">balance</strong>. Live cards need verified Duffel + Duffel Payments.</p>
+                <p id="checkout-error" class="text-red-400 text-sm hidden"></p>
+                <div id="checkout-success-panel" class="hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 space-y-3">
+                    <p class="text-emerald-400/90 text-sm font-medium" id="checkout-success">Booked successfully</p>
+                    <p class="text-white/50 text-xs leading-relaxed">Save your reference. For help, email <a href="mailto:ankushchauhan192010@gmail.com" class="underline text-white/70">support</a>.</p>
+                    <button type="button" id="checkout-done" class="w-full border border-white/20 text-white text-sm rounded-full py-2.5 hover:bg-white/5">Done</button>
+                </div>
+                <button type="submit" id="checkout-submit" class="w-full bg-white text-black font-medium rounded-full py-3 text-sm hover:scale-[1.02] transition-transform">Confirm booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Newsletter Popup Modal -->
+    <div id="newsletter-popup" class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+        <div class="bg-[#111] border border-white/10 rounded-3xl p-8 max-w-md w-full relative animate-fade-in-up">
+            <button id="popup-close" class="absolute top-4 right-4 text-white/50 hover:text-white" aria-label="Close">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <h3 id="popup-title" class="text-2xl font-medium mb-2">Get travel inspiration</h3>
+            <p class="text-white/50 text-sm mb-6">Join our newsletter for exclusive deals and destination guides.</p>
+            <form id="popup-form" class="space-y-4">
+                <input type="email" id="popup-email" placeholder="Your email" required
+                    class="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-white/30 newsletter-input">
+                <button type="submit" class="w-full bg-white text-black font-medium rounded-full py-3 text-sm hover:scale-[1.02] transition-transform">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Accessibility (short statement) -->
+    <section id="accessibility" class="relative py-16 md:py-20 bg-[#080808] border-t border-white/5" aria-label="Accessibility">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8 reveal">
+            <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Access</p>
+            <h2 class="text-2xl md:text-3xl font-medium text-white mb-6">Accessibility</h2>
+            <div class="space-y-4 text-white/60 text-sm leading-relaxed">
+                <p>We aim to make Airlines usable for as many people as possible. The site uses semantic structure, keyboard-focus styles, and respects reduced-motion preferences where animations are used.</p>
+                <p>If you hit a barrier (e.g. a form, contrast, or screen-reader issue), tell us via the <a href="#contact" class="text-white/90 underline underline-offset-2 hover:text-white">contact</a> section and we will work to fix it. Partner booking sites have their own accessibility practices when you leave our pages.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliate & advertising disclosure (required clarity near monetization) -->
+    <section id="disclosures" class="relative py-16 md:py-20 bg-[#0a0a0a] border-t border-white/5" aria-label="Affiliate and advertising disclosure">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8 reveal">
+            <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Transparency</p>
+            <h2 class="text-2xl md:text-3xl font-medium text-white mb-6">Affiliate &amp; advertising disclosure</h2>
+            <div class="space-y-4 text-white/60 text-sm leading-relaxed">
+                <p>Airlines may earn a commission when you book flights, transfers, or activities through links on this site (including Aviasales, GetTransfer, and Klook via Travelpayouts). That does not increase the price you are offered on the partner site.</p>
+                <p>We do not sell airline tickets ourselves. Sample flight results and prices on this page are for demonstration of the interface only. The partner’s site shows the binding price, taxes, and terms before you pay.</p>
+                <p>Advertising or sponsored placements, if added later, will be labeled. This disclosure is part of how we keep the product honest—not a substitute for accurate pricing or lawful data use.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal: Privacy, Cookies, Terms -->
+    <section id="privacy" class="relative py-20 md:py-24 bg-[#080808] border-t border-white/5" aria-label="Privacy Policy">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8 reveal">
+            <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Legal</p>
+            <h2 class="text-3xl md:text-4xl font-medium text-white leading-tight mb-2">Privacy Policy</h2>
+            <p class="text-white/40 text-sm mb-8">Last updated: August 2026</p>
+            <div class="space-y-6 text-white/60 text-sm leading-relaxed">
+                <p>Airlines (&quot;we&quot;, &quot;us&quot;) operates this website to help you discover travel ideas and book through trusted partners. This policy explains what information we collect and how we use it.</p>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Information we collect</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Information you submit (e.g. email for newsletter, contact or booking inquiry forms).</li>
+                        <li>Technical data such as browser type, device, and approximate location derived from IP (standard server logs).</li>
+                        <li>Preferences you set on this site (e.g. theme, cookie consent) stored in your browser via localStorage.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">How we use information</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>To respond to inquiries and send requested updates.</li>
+                        <li>To improve the website and fix problems.</li>
+                        <li>To measure traffic in aggregate where analytics are enabled.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Affiliate partners</h3>
+                    <p>When you click &quot;Book&quot;, airport transfer, or activities links, you leave our site and go to partners such as Aviasales, GetTransfer, or Klook (via Travelpayouts). Those sites have their own privacy policies. We may earn a commission if you complete a booking; this does not change the price you pay.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Sharing</h3>
+                    <p>We do not sell your personal information. We may share data with service providers who host this site or process form submissions, only as needed to run the service, or if required by law.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Your choices</h3>
+                    <p>You can decline non-essential cookies via our banner, clear localStorage in your browser, and unsubscribe from emails using the link in any message we send. For privacy requests, use the contact section on this site.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Children</h3>
+                    <p>This site is not directed at children under 16. We do not knowingly collect their personal data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cookies" class="relative py-20 md:py-24 bg-[#0a0a0a] border-t border-white/5" aria-label="Cookie Policy">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8 reveal">
+            <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Legal</p>
+            <h2 class="text-3xl md:text-4xl font-medium text-white leading-tight mb-2">Cookie Policy</h2>
+            <p class="text-white/40 text-sm mb-8">Last updated: August 2026</p>
+            <div class="space-y-6 text-white/60 text-sm leading-relaxed">
+                <p>Cookies and similar technologies help the site work and remember your choices. You can Accept or Decline non-essential use via the banner at the bottom of the page.</p>
+                <div>
+                    <h3 class="text-white font-medium mb-2">What we use</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><span class="text-white/80">Essential / functional:</span> remembering cookie consent and theme preference (stored in localStorage on your device).</li>
+                        <li><span class="text-white/80">Partner / affiliate:</span> when you click booking or partner links, those third parties may set their own cookies on their domains to attribute referrals.</li>
+                        <li><span class="text-white/80">Analytics (if enabled later):</span> anonymous usage statistics to improve the site. We will update this page if we add them.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Your control</h3>
+                    <p>Use Accept or Decline on our banner. You can also clear site data in your browser settings or block third-party cookies. Declining does not stop you from browsing; some preferences may reset on each visit.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">More detail</h3>
+                    <p>See our <a href="#privacy" class="text-white/90 underline underline-offset-2 hover:text-white">Privacy Policy</a> for how personal data is handled. Partner sites are governed by their own cookie and privacy policies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="terms" class="relative py-20 md:py-24 bg-[#080808] border-t border-white/5" aria-label="Terms of Service">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8 reveal">
+            <p class="text-white/40 text-sm tracking-[0.2em] uppercase mb-4 font-medium">Legal</p>
+            <h2 class="text-3xl md:text-4xl font-medium text-white leading-tight mb-2">Terms of Service</h2>
+            <p class="text-white/40 text-sm mb-8">Last updated: August 2026</p>
+            <div class="space-y-6 text-white/60 text-sm leading-relaxed">
+                <p>By using this website you agree to these terms. If you do not agree, please do not use the site.</p>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Our role</h3>
+                    <p>Airlines provides travel inspiration, search tools, and links to third-party booking partners. We are not the airline, hotel, or transfer provider. Flight prices and availability shown for illustration may differ on the partner site. Contracts for tickets, transfers, and activities are between you and the partner.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Affiliate disclosure</h3>
+                    <p>We may earn a commission when you book through links on this site (including Aviasales, GetTransfer, and Klook), at no extra cost to you.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Acceptable use</h3>
+                    <p>Do not misuse the site (e.g. attempt to disrupt it, scrape abusively, or submit false information). We may suspend access if we detect abuse.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Disclaimer</h3>
+                    <p>Content is provided &quot;as is&quot; without warranties of completeness or fitness for a particular purpose. We are not liable for partner booking errors, cancellations, or travel disruptions. Always review the partner’s terms before paying.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Changes</h3>
+                    <p>We may update these terms from time to time. Continued use after changes means you accept the updated terms. The date at the top of this section will be revised when we make material updates.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">Contact</h3>
+                    <p>Questions about these terms: use the <a href="#contact" class="text-white/90 underline underline-offset-2 hover:text-white">contact</a> section on this website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#050505] border-t border-white/5 py-20 md:py-24" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+                <div class="col-span-2 md:col-span-1">
+                    <a href="#hero" class="text-white font-semibold text-xl tracking-tight">Airlines</a>
+                    <p class="mt-4 text-white/40 text-sm leading-relaxed">Crafting meaningful travel experiences since 2015. Your journey, our passion.</p>
+                    <div class="flex items-center space-x-4 mt-6">
+                        <a href="#" class="text-white/30 hover:text-white/70 transition-colors" aria-label="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <a href="#" class="text-white/30 hover:text-white/70 transition-colors" aria-label="Instagram"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" class="text-white/30 hover:text-white/70 transition-colors" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#destinations" class="text-white/40 hover:text-white/70 transition-colors text-sm">Destinations</a></li>
+                        <li><a href="#flights" class="text-white/40 hover:text-white/70 transition-colors text-sm">Flights</a></li>
+                        <li><a href="#routes" class="text-white/40 hover:text-white/70 transition-colors text-sm">Popular routes</a></li>
+                        <li><a href="#about" class="text-white/40 hover:text-white/70 transition-colors text-sm">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#contact" class="text-white/40 hover:text-white/70 transition-colors text-sm">Contact</a></li>
+                        <li><a href="#disclosures" class="text-white/40 hover:text-white/70 transition-colors text-sm">Affiliate disclosure</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#terms" class="text-white/40 hover:text-white/70 transition-colors text-sm">Terms of Service</a></li>
+                        <li><a href="#privacy" class="text-white/40 hover:text-white/70 transition-colors text-sm">Privacy Policy</a></li>
+                        <li><a href="#cookies" class="text-white/40 hover:text-white/70 transition-colors text-sm">Cookie Policy</a></li>
+                        <li><a href="#accessibility" class="text-white/40 hover:text-white/70 transition-colors text-sm">Accessibility</a></li>
+                        <li><a href="#disclosures" class="text-white/40 hover:text-white/70 transition-colors text-sm">Advertising disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-white/30 text-sm">© 2026 Airlines. All rights reserved.</p>
+                <p class="text-white/20 text-xs mt-2 md:mt-0">Designed with care for travelers everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // ========== Loader ==========
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('loader').classList.add('done');
+            }, 800);
+        });
+
+        // ========== Theme Toggle ==========
+        const html = document.documentElement;
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const iconMoon = document.getElementById('icon-moon');
+        const iconSun = document.getElementById('icon-sun');
+
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                html.classList.add('light');
+                html.style.colorScheme = 'light';
+                if (iconMoon) iconMoon.classList.add('hidden');
+                if (iconSun) iconSun.classList.remove('hidden');
+            } else {
+                html.classList.remove('light');
+                html.style.colorScheme = 'dark';
+                if (iconMoon) iconMoon.classList.remove('hidden');
+                if (iconSun) iconSun.classList.add('hidden');
+            }
+            localStorage.setItem('airlines-theme', theme);
+        }
+
+        const savedTheme = localStorage.getItem('airlines-theme') || 'dark';
+        applyTheme(savedTheme);
+
+        function toggleTheme() {
+            applyTheme(html.classList.contains('light') ? 'dark' : 'light');
+        }
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+        if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // ========== Mobile Menu ==========
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', function () {
+            const open = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            menuToggle.setAttribute('aria-expanded', String(!open));
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.add('hidden');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+
+        // ========== Active nav section underline ==========
+        (function () {
+            var links = document.querySelectorAll('#navbar a[href^="#"], #mobile-menu a[href^="#"]');
+            var map = [];
+            links.forEach(function (a) {
+                var id = a.getAttribute('href');
+                if (!id || id === '#') return;
+                var el = document.querySelector(id);
+                if (el) map.push({ el: el, a: a });
+            });
+            function onScroll() {
+                var y = window.scrollY + 120;
+                var current = null;
+                map.forEach(function (m) {
+                    if (m.el.offsetTop <= y) current = m;
+                });
+                links.forEach(function (a) { a.classList.remove('nav-link-active'); });
+                if (current) current.a.classList.add('nav-link-active');
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        // ========== Navbar scroll ==========
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
+            else navbar.classList.remove('nav-scrolled');
+        }, { passive: true });
+
+        // ========== Back to top ==========
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) {
+                backToTop.style.opacity = '1';
+                backToTop.style.pointerEvents = 'auto';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.pointerEvents = 'none';
+            }
+        }, { passive: true });
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== Intersection Observer (reveal + lazy images) ==========
+        const revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function (el) {
+            revealObserver.observe(el);
+        });
+
+        const lazyObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.onload = function () { img.classList.add('loaded'); };
+                        img.removeAttribute('data-src');
+                    }
+                    lazyObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '200px' });
+
+        document.querySelectorAll('img.lazy').forEach(function (img) {
+            lazyObserver.observe(img);
+        });
+
+        // ========== Counters ==========
+        function animateCounter(el) {
+            const target = parseFloat(el.dataset.target);
+            const decimals = parseInt(el.dataset.decimals || '0', 10);
+            const suffix = el.dataset.suffix || '';
+            const format = el.dataset.format || '';
+            const duration = 1800;
+            const start = performance.now();
+
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                let value = target * eased;
+                if (format === 'k' && target >= 1000) {
+                    el.textContent = (value / 1000).toFixed(value >= 10000 ? 0 : 1) + 'K' + suffix;
+                } else {
+                    el.textContent = value.toFixed(decimals) + suffix;
+                }
+                if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
+
+        const counterObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(function (el) {
+            counterObserver.observe(el);
+        });
+
+        // ========== Destination Filters ==========
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const destCards = document.querySelectorAll('.destination-card');
+
+        filterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                filterBtns.forEach(function (b) {
+                    b.classList.remove('active', 'bg-white', 'text-black');
+                    b.classList.add('text-white/80');
+                });
+                btn.classList.add('active', 'bg-white', 'text-black');
+                btn.classList.remove('text-white/80');
+
+                const filter = btn.dataset.filter;
+                destCards.forEach(function (card) {
+                    if (filter === 'all' || card.dataset.region === filter) {
+                        card.classList.remove('filtered-out');
+                    } else {
+                        card.classList.add('filtered-out');
+                    }
+                });
+            });
+        });
+
+        // ========== FAQ Accordion ==========
+        document.querySelectorAll('.faq-trigger').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(function (i) {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // ========== Gallery Lightbox ==========
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.gallery-item img').forEach(function (img) {
+            img.addEventListener('click', function () {
+                const src = img.src || img.dataset.src;
+                lightboxImg.src = src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ========== Cursor glow on destination cards ==========
+        document.querySelectorAll('.glow-card').forEach(function (card) {
+            card.addEventListener('mousemove', function (e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--glow-x', x + 'px');
+                card.style.setProperty('--glow-y', y + 'px');
+                const before = card;
+                // Use CSS variable approach via style on pseudo is limited; approximate with box-shadow
+            });
+        });
+
+
+        // ========== Performance: low-end / reduced motion / hero video ==========
+        (function () {
+            var low = false;
+            try {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) low = true;
+                if (navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ''))) low = true;
+                if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4 && window.innerWidth < 768) low = true;
+            } catch (e) {}
+            if (low) document.documentElement.classList.add('low-end');
+            var v = document.getElementById('hero-video');
+            if (v) {
+                if (low || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    v.removeAttribute('autoplay');
+                    try { v.pause(); } catch (e) {}
+                    v.style.display = 'none';
+                } else {
+                    var play = function () { v.play().catch(function () {}); };
+                    if (v.readyState >= 2) play(); else v.addEventListener('loadeddata', play, { once: true });
+                }
+            }
+        })();
+
+        // ========== Mobile sticky search CTA ==========
+        (function () {
+            var bar = document.getElementById('search-sticky-bar');
+            var flights = document.getElementById('flights');
+            if (!bar || !flights) return;
+            function update() {
+                if (window.innerWidth > 767) {
+                    bar.classList.remove('show');
+                    document.body.classList.remove('has-sticky-search');
+                    return;
+                }
+                var rect = flights.getBoundingClientRect();
+                var pastHero = window.scrollY > window.innerHeight * 0.5;
+                var inFlights = rect.top < window.innerHeight && rect.bottom > 100;
+                if (pastHero && !inFlights) {
+                    bar.classList.add('show');
+                    document.body.classList.add('has-sticky-search');
+                } else {
+                    bar.classList.remove('show');
+                    document.body.classList.remove('has-sticky-search');
+                }
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+
+        // ========== Parallax on hero video (subtle, low-end friendly) ==========
+        const parallaxEl = document.querySelector('.parallax-video');
+        let ticking = false;
+        window.addEventListener('scroll', function () {
+            if (document.documentElement.classList.contains('low-end')) return;
+            if (!ticking && parallaxEl) {
+                requestAnimationFrame(function () {
+                    const scrolled = window.scrollY;
+                    if (scrolled < window.innerHeight) {
+                        parallaxEl.style.transform = 'translateY(' + (scrolled * 0.15) + 'px)';
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // ========== Newsletter form validation ==========
+        const newsletterForm = document.getElementById('newsletter-form');
+        const emailInput = document.getElementById('newsletter-email');
+        const emailError = document.getElementById('email-error');
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        newsletterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const val = emailInput.value.trim();
+            if (!isValidEmail(val)) {
+                emailError.classList.remove('hidden');
+                emailInput.setAttribute('aria-invalid', 'true');
+                return;
+            }
+            emailError.classList.add('hidden');
+            emailInput.setAttribute('aria-invalid', 'false');
+            // In production this would POST to Supabase leads table
+            alert('Thank you! We will be in touch shortly.');
+            newsletterForm.reset();
+        });
+
+        // ========== Newsletter popup (after 10s, once) ==========
+        if (!localStorage.getItem('airlines-popup-seen')) {
+            setTimeout(function () {
+                const popup = document.getElementById('newsletter-popup');
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+            }, 10000);
+        }
+        document.getElementById('popup-close').addEventListener('click', function () {
+            document.getElementById('newsletter-popup').classList.add('hidden');
+            document.getElementById('newsletter-popup').classList.remove('flex');
+            localStorage.setItem('airlines-popup-seen', '1');
+        });
+        document.getElementById('popup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('popup-email').value.trim();
+            if (!isValidEmail(email)) return;
+            localStorage.setItem('airlines-popup-seen', '1');
+            document.getElementById('newsletter-popup').classList.add('hidden');
+            alert('Thanks for subscribing!');
+        });
+
+        // ========== Cookie consent ==========
+        const cookieBanner = document.getElementById('cookie-banner');
+        if (!localStorage.getItem('airlines-cookies')) {
+            setTimeout(function () {
+                cookieBanner.style.transform = 'translateY(0)';
+            }, 1500);
+        }
+        document.getElementById('cookie-accept').addEventListener('click', function () {
+            localStorage.setItem('airlines-cookies', 'accepted');
+            cookieBanner.style.transform = 'translateY(100%)';
+        });
+        document.getElementById('cookie-decline').addEventListener('click', function () {
+            localStorage.setItem('airlines-cookies', 'declined');
+            cookieBanner.style.transform = 'translateY(100%)';
+        });
+
+        // ========== Flight Search (mock + ready for backend) ==========
+        const flightForm = document.getElementById('flight-search-form');
+        const flightResults = document.getElementById('flight-results');
+        const flightList = document.getElementById('flight-list');
+        const flightLoading = document.getElementById('flight-loading');
+        const flightError = document.getElementById('flight-error');
+        const resultsCount = document.getElementById('results-count');
+
+        // Set min date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('depart-date').min = today;
+        document.getElementById('return-date').min = today;
+        document.getElementById('depart-date').addEventListener('change', function () {
+            var d = this.value;
+            var r = document.getElementById('return-date');
+            if (d) {
+                r.min = d;
+                if (r.value && r.value < d) r.value = d;
+            }
+        });
+
+
+        flightForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const origin = document.getElementById('origin').value.trim();
+            const dest = document.getElementById('destination').value.trim();
+            const depart = document.getElementById('depart-date').value;
+            const ret = document.getElementById('return-date').value;
+            const pax = document.getElementById('passengers').value;
+            const cabin = document.getElementById('cabin').value;
+
+            if (!origin || !dest || origin.length < 2 || dest.length < 2 || !depart) {
+                flightError.textContent = 'Please enter From, To (city or airport), and a departure date.';
+                flightError.classList.remove('hidden');
+                flightResults.classList.remove('hidden');
+                return;
+            }
+
+            flightError.classList.add('hidden');
+            flightResults.classList.remove('hidden');
+            flightLoading.classList.remove('hidden');
+            flightList.innerHTML = '';
+            var searchBtn = document.getElementById('search-flights-btn');
+            if (searchBtn) { searchBtn.disabled = true; searchBtn.textContent = 'Searching…'; }
+
+            resultsCount.textContent = '';
+
+            try {
+                const apiBase = window.AIRLINES_API_BASE || '';
+                const res = await fetch(apiBase + '/api/flights', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        origin: origin,
+                        destination: dest,
+                        departDate: depart,
+                        returnDate: ret || undefined,
+                        passengers: pax,
+                        cabin: cabin
+                    })
+                });
+                const data = await res.json().catch(function () { return {}; });
+                flightLoading.classList.add('hidden');
+                if (searchBtn) { searchBtn.disabled = false; searchBtn.textContent = 'Search Flights'; }
+
+                if (!res.ok) {
+                    var msg = data.error || 'Unable to search flights right now.';
+                    if (/expir/i.test(msg) || /no longer available/i.test(msg)) {
+                        msg = 'Offers expired or unavailable. Search again for fresh prices.';
+                    } else if (/timeout|network|Failed to fetch/i.test(msg)) {
+                        msg = 'Connection issue — the API may be waking up. Wait a few seconds and try again.';
+                    }
+                    flightError.textContent = msg;
+                    flightError.classList.remove('hidden');
+                    var extrasFail = document.getElementById('flight-extras');
+                    if (extrasFail) extrasFail.classList.add('hidden');
+                    return;
+                }
+
+                var list = data.flights || [];
+                resultsCount.textContent = list.length + ' options' + (data.mode === 'test' ? ' (Duffel test)' : '');
+
+                if (!list.length) {
+                    flightError.textContent = 'No offers found. Try IATA codes (JFK, LHR, NYC) or other dates.';
+                    flightError.classList.remove('hidden');
+                }
+
+                
+                function esc(s) {
+                    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+                }
+window.__lastOffers = list;
+
+                list.forEach(function (f, idx) {
+                    var priceLabel = (f.currency && f.currency !== 'USD' ? f.currency + ' ' : '$') + f.price;
+                    var row = document.createElement('div');
+                    row.className = 'flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors';
+                    var initial = esc((f.airline || 'A').charAt(0).toUpperCase());
+                    row.innerHTML =
+                        '<div class="flex items-start gap-3 flex-1 min-w-0">' +
+                            '<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium shrink-0">' + initial + '</div>' +
+                            '<div class="min-w-0">' +
+                                '<div class="font-medium truncate">' + esc(f.airline || 'Airline') + ' · ' + esc(f.flight || '') + '</div>' +
+                                '<div class="text-sm text-white/50 mt-1">' + esc(f.depart || '') + ' → ' + esc(f.arrive || '') + ' · ' + esc(f.duration || '') + ' · ' + esc(f.stops || '') + '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="flex items-center gap-3 sm:flex-col sm:items-end w-full sm:w-auto">' +
+                            '<div class="text-xl font-semibold tabular-nums">' + esc(priceLabel) + '</div>' +
+                            '<button type="button" class="book-btn text-sm bg-white text-black px-5 py-2.5 rounded-full hover:scale-[1.02] transition-transform w-full sm:w-auto text-center" data-idx="' + idx + '">Select</button>' +
+                        '</div>';
+                    flightList.appendChild(row);
+                });
+
+                flightList.querySelectorAll('.book-btn').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var offer = (window.__lastOffers || [])[Number(btn.getAttribute('data-idx'))];
+                        if (offer) openCheckout(offer);
+                    });
+                });
+
+                var extras = document.getElementById('flight-extras');
+                if (extras) extras.classList.remove('hidden');
+            } catch (err) {
+                flightLoading.classList.add('hidden');
+                if (searchBtn) { searchBtn.disabled = false; searchBtn.textContent = 'Search Flights'; }
+                flightError.textContent = 'Cannot reach API. Start the server: cd api && npm start';
+                flightError.classList.remove('hidden');
+                var extras = document.getElementById('flight-extras');
+                if (extras) extras.classList.add('hidden');
+            }
+        });
+
+        // ========== Duffel checkout modal (multi-passenger) ==========
+        var checkoutOffer = null;
+        var checkoutModal = document.getElementById('checkout-modal');
+
+        function escapeHtml(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function buildPaxFields(count) {
+            var box = document.getElementById('pax-fields');
+            box.innerHTML = '';
+            var n = Math.max(1, count);
+            for (var i = 0; i < n; i++) {
+                var block = document.createElement('div');
+                block.className = 'space-y-3 p-4 rounded-2xl border border-white/10 bg-white/[0.02]';
+                block.innerHTML =
+                    '<p class="text-sm text-white/70 font-medium">Passenger ' + (i + 1) + '</p>' +
+                    '<div class="grid grid-cols-2 gap-3">' +
+                        '<div><label class="block text-xs text-white/50 mb-1">First name</label>' +
+                        '<input data-pax="given" data-i="' + i + '" required autocomplete="given-name" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white newsletter-input"></div>' +
+                        '<div><label class="block text-xs text-white/50 mb-1">Last name</label>' +
+                        '<input data-pax="family" data-i="' + i + '" required autocomplete="family-name" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white newsletter-input"></div>' +
+                    '</div>' +
+                    '<div><label class="block text-xs text-white/50 mb-1">Email</label>' +
+                    '<input data-pax="email" data-i="' + i + '" type="email" required autocomplete="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white newsletter-input"></div>' +
+                    '<div><label class="block text-xs text-white/50 mb-1">Phone (+country code)</label>' +
+                    '<input data-pax="phone" data-i="' + i + '" type="tel" required placeholder="+1..." class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white newsletter-input"></div>' +
+                    '<div class="grid grid-cols-2 gap-3">' +
+                        '<div><label class="block text-xs text-white/50 mb-1">Date of birth</label>' +
+                        '<input data-pax="born" data-i="' + i + '" type="date" required class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white newsletter-input"></div>' +
+                        '<div><label class="block text-xs text-white/50 mb-1">Title</label>' +
+                        '<select data-pax="title" data-i="' + i + '" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white newsletter-input">' +
+                        '<option value="mr">Mr</option><option value="ms">Ms</option><option value="mrs">Mrs</option><option value="miss">Miss</option></select></div>' +
+                    '</div>' +
+                    '<div><label class="block text-xs text-white/50 mb-1">Gender</label>' +
+                    '<select data-pax="gender" data-i="' + i + '" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white newsletter-input">' +
+                    '<option value="m">Male</option><option value="f">Female</option></select></div>';
+                box.appendChild(block);
+            }
+        }
+
+        function openCheckout(offer) {
+            checkoutOffer = offer;
+            var sum = document.getElementById('checkout-summary');
+            var priceLabel = (offer.currency && offer.currency !== 'USD' ? offer.currency + ' ' : '$') + offer.price;
+            sum.textContent = (offer.airline || '') + ' · ' + (offer.flight || '') + ' · ' + priceLabel;
+            var ids = offer.passenger_ids || [];
+            buildPaxFields(ids.length || 1);
+            document.getElementById('checkout-error').classList.add('hidden');
+            var sp = document.getElementById('checkout-success-panel');
+            if (sp) sp.classList.add('hidden');
+            var cs = document.getElementById('checkout-success');
+            if (cs) cs.classList.add('hidden');
+            var sub = document.getElementById('checkout-submit');
+            if (sub) { sub.classList.remove('hidden'); sub.disabled = false; sub.textContent = 'Confirm booking'; }
+            checkoutModal.classList.remove('hidden');
+            checkoutModal.classList.add('flex');
+        }
+
+        function closeCheckout() {
+            checkoutModal.classList.add('hidden');
+            checkoutModal.classList.remove('flex');
+            checkoutOffer = null;
+        }
+
+        document.getElementById('checkout-close').addEventListener('click', closeCheckout);
+        checkoutModal.addEventListener('click', function (e) {
+            if (e.target === checkoutModal) closeCheckout();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && checkoutModal.classList.contains('flex')) closeCheckout();
+        });
+
+        document.getElementById('checkout-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            if (!checkoutOffer) return;
+
+            var errEl = document.getElementById('checkout-error');
+            var okEl = document.getElementById('checkout-success');
+            var submitBtn = document.getElementById('checkout-submit');
+            errEl.classList.add('hidden');
+            okEl.classList.add('hidden');
+
+            var paxIds = checkoutOffer.passenger_ids || [];
+            if (!paxIds.length) {
+                errEl.textContent = 'Missing passenger id from offer. Search again and select a fresh offer.';
+                errEl.classList.remove('hidden');
+                return;
+            }
+
+            var passengers = [];
+            for (var i = 0; i < paxIds.length; i++) {
+                var given = document.querySelector('[data-pax="given"][data-i="' + i + '"]');
+                var family = document.querySelector('[data-pax="family"][data-i="' + i + '"]');
+                var email = document.querySelector('[data-pax="email"][data-i="' + i + '"]');
+                var phone = document.querySelector('[data-pax="phone"][data-i="' + i + '"]');
+                var born = document.querySelector('[data-pax="born"][data-i="' + i + '"]');
+                var title = document.querySelector('[data-pax="title"][data-i="' + i + '"]');
+                var gender = document.querySelector('[data-pax="gender"][data-i="' + i + '"]');
+                if (!given || !family || !email || !phone || !born) {
+                    errEl.textContent = 'Fill all fields for passenger ' + (i + 1) + '.';
+                    errEl.classList.remove('hidden');
+                    return;
+                }
+                var phoneVal = phone.value.trim();
+                if (phoneVal && phoneVal.charAt(0) !== '+') {
+                    errEl.textContent = 'Phone for passenger ' + (i + 1) + ' must start with + and country code.';
+                    errEl.classList.remove('hidden');
+                    return;
+                }
+                passengers.push({
+                    id: paxIds[i],
+                    given_name: given.value.trim(),
+                    family_name: family.value.trim(),
+                    email: email.value.trim(),
+                    phone_number: phoneVal,
+                    born_on: born.value,
+                    title: title ? title.value : 'mr',
+                    gender: gender ? gender.value : 'm'
+                });
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking…';
+
+            try {
+                var apiBase = window.AIRLINES_API_BASE || '';
+                var res = await fetch(apiBase + '/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        offerId: checkoutOffer.id,
+                        amount: checkoutOffer.price,
+                        currency: checkoutOffer.currency || 'USD',
+                        passengers: passengers
+                    })
+                });
+                var data = await res.json().catch(function () { return {}; });
+                if (!res.ok) {
+                    var bmsg = data.error || 'Booking failed.';
+                    if (/expir|no longer available|offer/i.test(bmsg)) {
+                        bmsg = 'This offer expired. Close this window, search again, and select a new offer.';
+                    } else if (/balance|insufficient/i.test(bmsg)) {
+                        bmsg = 'Test wallet issue. Try another offer or check Duffel test balance.';
+                    }
+                    errEl.textContent = bmsg;
+                    errEl.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Confirm booking';
+                    return;
+                }
+                var o = data.order || {};
+                okEl.textContent = 'Booked' + (data.mode === 'test' ? ' (test)' : '') + '. Ref: ' + (o.booking_reference || o.id || '—') +
+                    (o.total_amount ? ' · ' + (o.total_currency || '') + ' ' + o.total_amount : '');
+                var panel = document.getElementById('checkout-success-panel');
+                if (panel) panel.classList.remove('hidden');
+                okEl.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+                var doneBtn = document.getElementById('checkout-done');
+                if (doneBtn) doneBtn.onclick = function () { closeCheckout(); };
+            } catch (err) {
+                errEl.textContent = 'Network error. Is the API server running?';
+                errEl.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Confirm booking';
+            }
+        });
+
+        // ========== Trip type + swap airports ==========
+        (function () {
+            var returnWrap = document.getElementById('return-wrap');
+            var returnInput = document.getElementById('return-date');
+            var roundBtn = document.getElementById('trip-round');
+            var oneBtn = document.getElementById('trip-oneway');
+            function setTrip(mode) {
+                var isRound = mode === 'round';
+                if (returnWrap) returnWrap.style.opacity = isRound ? '1' : '0.45';
+                if (returnWrap) returnWrap.style.pointerEvents = isRound ? '' : 'none';
+                if (returnInput && !isRound) returnInput.value = '';
+                if (roundBtn && oneBtn) {
+                    if (isRound) {
+                        roundBtn.className = 'trip-type-btn text-xs font-medium px-4 py-2 rounded-full bg-white text-black transition-all';
+                        oneBtn.className = 'trip-type-btn text-xs font-medium px-4 py-2 rounded-full text-white/60 hover:text-white transition-all';
+                    } else {
+                        oneBtn.className = 'trip-type-btn text-xs font-medium px-4 py-2 rounded-full bg-white text-black transition-all';
+                        roundBtn.className = 'trip-type-btn text-xs font-medium px-4 py-2 rounded-full text-white/60 hover:text-white transition-all';
+                    }
+                }
+            }
+            if (roundBtn) roundBtn.addEventListener('click', function () { setTrip('round'); });
+            if (oneBtn) oneBtn.addEventListener('click', function () { setTrip('oneway'); });
+            var swap = document.getElementById('swap-airports');
+            if (swap) {
+                swap.addEventListener('click', function () {
+                    var o = document.getElementById('origin');
+                    var d = document.getElementById('destination');
+                    if (!o || !d) return;
+                    var tmp = o.value;
+                    o.value = d.value;
+                    d.value = tmp;
+                });
+            }
+        })();
+
+        // ========== Popular route chips → fill search form ==========
+        document.querySelectorAll('.route-chip').forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                var from = chip.getAttribute('data-from') || '';
+                var to = chip.getAttribute('data-to') || '';
+                var originEl = document.getElementById('origin');
+                var destEl = document.getElementById('destination');
+                if (originEl) originEl.value = from;
+                if (destEl) destEl.value = to;
+                var flights = document.getElementById('flights');
+                if (flights) {
+                    var top = flights.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+                if (originEl) originEl.focus();
+            });
+        });
+
+        // ========== Smooth anchor offset for fixed nav ==========
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                const id = this.getAttribute('href');
+                if (id === '#') return;
+                const target = document.querySelector(id);
+                if (target) {
+                    e.preventDefault();
+                    const top = target.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+
+    })();
+    </script>
+</body>
+</html>
